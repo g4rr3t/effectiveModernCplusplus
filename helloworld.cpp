@@ -29,7 +29,6 @@ class MyClass
     void printNames();
 
     void passInt(int i){}
-
 };
 
 template<typename T>
@@ -50,11 +49,19 @@ void MyClass::printNames()
     cout << endl;
 }
 
+//alias with template - list containing pairs of a type and MyClass<type>
+template<typename T>
+using MyList = vector<T>;
 
 int main()
 {
+    //alias
+    using TimeStamp = std::chrono::time_point<std::chrono::system_clock>;
 
-    std::chrono::time_point<std::chrono::system_clock> start, end;
+
+
+
+    TimeStamp start, end;
 
     start = chrono::system_clock::now();
     // vector<string> msg {"Hello", "C++", "World", "from", "VS Code2!"};
@@ -72,6 +79,10 @@ int main()
     string petname{"Chip"};
     c.logAndAdd(petname);
     c.logAndAdd(string("dale"));
+
+    constexpr auto exp("autoexp");
+    c.logAndAdd(exp);
+
 
     MyClass d(c);
 
